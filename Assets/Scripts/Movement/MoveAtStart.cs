@@ -1,4 +1,4 @@
-namespace Creazen.EFE.Movement {
+namespace Creazen.Seeker.Movement {
     using UnityEngine;
 
     public class MoveAtStart : MonoBehaviour {

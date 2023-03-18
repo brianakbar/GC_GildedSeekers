@@ -1,5 +1,5 @@
-namespace Creazen.EFE.Movement {
-    using Creazen.EFE.Core;
+namespace Creazen.Seeker.Movement {
+    using Creazen.Seeker.Core;
     using UnityEngine;
 
     [RequireComponent(typeof(Rigidbody2D), typeof(ActionScheduler))]

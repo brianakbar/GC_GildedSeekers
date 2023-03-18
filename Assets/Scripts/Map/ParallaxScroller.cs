@@ -1,4 +1,4 @@
-namespace Creazen.EFE.Map {
+namespace Creazen.Seeker.Map {
     using UnityEngine;
     using UnityEngine.UI;
 

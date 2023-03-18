@@ -1,4 +1,4 @@
-namespace Creazen.EFE.Treasure {
+namespace Creazen.Seeker.Treasure {
     using UnityEngine;
 
     public class KeyHolder : MonoBehaviour {

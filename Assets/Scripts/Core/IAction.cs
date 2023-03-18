@@ -1,4 +1,4 @@
-namespace Creazen.EFE.Core {
+namespace Creazen.Seeker.Core {
     public interface IAction {
         void Cancel();
     }

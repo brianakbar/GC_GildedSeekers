@@ -1,6 +1,6 @@
-namespace Creazen.EFE.Control {
-    using Creazen.EFE.Movement;
-    using Creazen.EFE.Treasure;
+namespace Creazen.Seeker.Control {
+    using Creazen.Seeker.Movement;
+    using Creazen.Seeker.Treasure;
     using UnityEngine;
     using UnityEngine.InputSystem;
 

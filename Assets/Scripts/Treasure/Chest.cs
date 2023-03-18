@@ -1,4 +1,4 @@
-namespace Creazen.EFE.Treasure {
+namespace Creazen.Seeker.Treasure {
     using System.Linq;
     using UnityEngine;
 
