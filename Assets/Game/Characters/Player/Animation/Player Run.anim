@@ -6,7 +6,7 @@ AnimationClip:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Idle
+  m_Name: Player Run
   serializedVersion: 6
   m_Legacy: 0
   m_Compressed: 0
@@ -20,15 +20,17 @@ AnimationClip:
   m_PPtrCurves:
   - curve:
     - time: 0
-      value: {fileID: 21300000, guid: dfa8a23cfd6ea8b439b6915fb52b49bc, type: 3}
+      value: {fileID: 21300000, guid: 9b4219f50b53be241b5531d52b4d3f80, type: 3}
     - time: 0.083333336
-      value: {fileID: 21300000, guid: d5807a50f8fbe684f93fe821f08ab1fb, type: 3}
+      value: {fileID: 21300000, guid: 381b6642622b789489b78c906d071c58, type: 3}
     - time: 0.16666667
-      value: {fileID: 21300000, guid: 235348c50cdb4124db226535eeac49f7, type: 3}
+      value: {fileID: 21300000, guid: 17771fe4f5532054db44002589c52d53, type: 3}
     - time: 0.25
-      value: {fileID: 21300000, guid: 031678cae13e70645b04f71a285ad02d, type: 3}
+      value: {fileID: 21300000, guid: 33b95b1e51f11f84684e681ff493ce61, type: 3}
     - time: 0.33333334
-      value: {fileID: 21300000, guid: 1e6fc39510278ee4da9aa55061f1faf5, type: 3}
+      value: {fileID: 21300000, guid: 6ba36907751059c4d811f46925b80287, type: 3}
+    - time: 0.41666666
+      value: {fileID: 21300000, guid: 070bc931a6482c546ab0d228190de682, type: 3}
     attribute: m_Sprite
     path: Captain Clown Nose
     classID: 212
@@ -48,17 +50,18 @@ AnimationClip:
       customType: 23
       isPPtrCurve: 1
     pptrCurveMapping:
-    - {fileID: 21300000, guid: dfa8a23cfd6ea8b439b6915fb52b49bc, type: 3}
-    - {fileID: 21300000, guid: d5807a50f8fbe684f93fe821f08ab1fb, type: 3}
-    - {fileID: 21300000, guid: 235348c50cdb4124db226535eeac49f7, type: 3}
-    - {fileID: 21300000, guid: 031678cae13e70645b04f71a285ad02d, type: 3}
-    - {fileID: 21300000, guid: 1e6fc39510278ee4da9aa55061f1faf5, type: 3}
+    - {fileID: 21300000, guid: 9b4219f50b53be241b5531d52b4d3f80, type: 3}
+    - {fileID: 21300000, guid: 381b6642622b789489b78c906d071c58, type: 3}
+    - {fileID: 21300000, guid: 17771fe4f5532054db44002589c52d53, type: 3}
+    - {fileID: 21300000, guid: 33b95b1e51f11f84684e681ff493ce61, type: 3}
+    - {fileID: 21300000, guid: 6ba36907751059c4d811f46925b80287, type: 3}
+    - {fileID: 21300000, guid: 070bc931a6482c546ab0d228190de682, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_AdditiveReferencePoseClip: {fileID: 0}
     m_AdditiveReferencePoseTime: 0
     m_StartTime: 0
-    m_StopTime: 0.41666666
+    m_StopTime: 0.5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
