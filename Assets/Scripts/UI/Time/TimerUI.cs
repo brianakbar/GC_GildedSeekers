@@ -13,7 +13,12 @@ namespace Creazen.Seeker.UI.Time {
         }
 
         void Update() {
-            timerText.text = timer.CurrentTime.ToString();
+            if(timer.CurrentTime <= 0) {
+                gameObject.SetActive(false);
+            }
+            else {
+                timerText.text = timer.CurrentTime.ToString();
+            }
         }
     }
 }
