@@ -5,8 +5,13 @@ namespace Creazen.Seeker.LevelManagement {
 
     public class LevelManager : MonoBehaviour {
         public void GoToNextLevel() {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+            //StartCoroutine(ProcessLoadLevel(SceneManager.GetActiveScene().buildIndex));
             int nextLevelBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            if (!IsSceneExist(nextLevelBuildIndex)) return;
+            if (!IsSceneExist(nextLevelBuildIndex)) {
+                StartCoroutine(ProcessLoadLevel(0));
+                return;
+            }
 
             StartCoroutine(ProcessLoadLevel(nextLevelBuildIndex));
         }

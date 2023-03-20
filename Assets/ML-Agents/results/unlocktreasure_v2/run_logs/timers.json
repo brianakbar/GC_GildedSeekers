@@ -1,0 +1,42 @@
+{
+    "name": "root",
+    "metadata": {
+        "timer_format_version": "0.1.0",
+        "start_time_seconds": "1679255033",
+        "python_version": "3.8.13 (default, Oct 19 2022, 22:38:03) [MSC v.1916 64 bit (AMD64)]",
+        "command_line_arguments": "E:\\anaconda3\\envs\\mlagents\\Scripts\\mlagents-learn Build/config.yaml --run-id=unlocktreasure_v2 --resume --env=Build/Gilded Seekers --num-env=8",
+        "mlagents_version": "0.30.0",
+        "mlagents_envs_version": "0.30.0",
+        "communication_protocol_version": "1.5.0",
+        "pytorch_version": "1.13.1+cpu",
+        "numpy_version": "1.21.2",
+        "end_time_seconds": "1679255051"
+    },
+    "total": 17.155081199999998,
+    "count": 1,
+    "self": 1.888872499999998,
+    "children": {
+        "run_training.setup": {
+            "total": 0.8837760000000001,
+            "count": 1,
+            "self": 0.8837760000000001
+        },
+        "TrainerController.start_learning": {
+            "total": 14.3824327,
+            "count": 1,
+            "self": 0.00013210000000185573,
+            "children": {
+                "TrainerController._reset_env": {
+                    "total": 14.382279800000001,
+                    "count": 1,
+                    "self": 14.382279800000001
+                },
+                "TrainerController._save_models": {
+                    "total": 2.0799999997933583e-05,
+                    "count": 1,
+                    "self": 2.0799999997933583e-05
+                }
+            }
+        }
+    }
+}

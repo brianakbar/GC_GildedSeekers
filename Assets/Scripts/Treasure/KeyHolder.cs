@@ -1,8 +1,11 @@
 namespace Creazen.Seeker.Treasure {
+    using System;
     using UnityEngine;
 
     public class KeyHolder : MonoBehaviour {
         [SerializeField] float chestOpenRadius = 5f;
+
+        public event Action onCatch;
 
         int keyCount = 0;
 
@@ -10,6 +13,7 @@ namespace Creazen.Seeker.Treasure {
             if(other.TryGetComponent<Key>(out Key key)) {
                 key.Catch();
                 keyCount++;
+                if(onCatch != null) onCatch();
             }
         }
 

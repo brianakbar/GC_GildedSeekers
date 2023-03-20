@@ -1,4 +1,5 @@
 namespace Creazen.Seeker.Movement {
+    using System;
     using Creazen.Seeker.Core;
     using UnityEngine;
 
@@ -6,6 +7,8 @@ namespace Creazen.Seeker.Movement {
     public class Mover : MonoBehaviour, IAction {
         [SerializeField] float moveSpeed = 5f;
         [SerializeField] float[] jumpSpeeds = {5f};
+
+        public event Action onLand;
 
         float floatZeroTolerance = 0.001f;
         bool isMoving = false;
@@ -42,17 +45,20 @@ namespace Creazen.Seeker.Movement {
             isMoving = true;
         }
 
-        public void Jump() {
+        public bool Jump() {
             if(numberOfJumpLeft > 0) {
                 float jumpSpeed = jumpSpeeds[jumpSpeeds.Length - numberOfJumpLeft];
                 body.velocity = new Vector2(body.velocity.x, jumpSpeed);
                 numberOfJumpLeft--;
+                return true;
             }
+            return false;
         }
 
         void OnTriggerEnter2D(Collider2D other) {
             if(other.tag == terrainTag) {
                 numberOfJumpLeft = jumpSpeeds.Length;
+                if(onLand != null) onLand();
             }
         }
 

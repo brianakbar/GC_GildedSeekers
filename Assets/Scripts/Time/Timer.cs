@@ -14,6 +14,12 @@ namespace Creazen.Seeker.Time {
             }
         }
 
+        public int InitialTime {
+            get {
+                return initialTime;
+            }
+        }
+
         void Awake() {
             currentTime = initialTime;
         }

@@ -1,0 +1,38 @@
+{
+    "Unlock Treasure Agent": {
+        "checkpoints": [
+            {
+                "steps": 59426,
+                "file_path": "results\\unlocktreasure\\Unlock Treasure Agent\\Unlock Treasure Agent-59426.onnx",
+                "reward": -3.966666892170906,
+                "creation_time": 1679233212.813535,
+                "auxillary_file_paths": [
+                    "results\\unlocktreasure\\Unlock Treasure Agent\\Unlock Treasure Agent-59426.pt"
+                ]
+            },
+            {
+                "steps": 124063,
+                "file_path": "results\\unlocktreasure\\Unlock Treasure Agent\\Unlock Treasure Agent-124063.onnx",
+                "reward": -3.966666892170906,
+                "creation_time": 1679233826.9644406,
+                "auxillary_file_paths": [
+                    "results\\unlocktreasure\\Unlock Treasure Agent\\Unlock Treasure Agent-124063.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 124063,
+            "file_path": "results\\unlocktreasure\\Unlock Treasure Agent.onnx",
+            "reward": -3.966666892170906,
+            "creation_time": 1679233826.9644406,
+            "auxillary_file_paths": [
+                "results\\unlocktreasure\\Unlock Treasure Agent\\Unlock Treasure Agent-124063.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}

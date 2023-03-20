@@ -2063,6 +2063,10 @@ PrefabInstance:
       propertyPath: m_hasFontAssetChanged
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1346719727, guid: 120143cf84823e34c809693828d12551, type: 3}
+      propertyPath: initialTime
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 1346719729, guid: 120143cf84823e34c809693828d12551, type: 3}
       propertyPath: spawnPosition.y
       value: 2.51
