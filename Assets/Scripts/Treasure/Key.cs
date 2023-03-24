@@ -1,7 +1,8 @@
 namespace Creazen.Seeker.Treasure {
+    using Creazen.Seeker.Session;
     using UnityEngine;
 
-    public class Key : MonoBehaviour {
+    public class Key : MonoBehaviour, ISession {
         Animator animator;
 
         void Awake() {
@@ -13,7 +14,14 @@ namespace Creazen.Seeker.Treasure {
         }
 
         public void Destroy() {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            gameObject.SetActive(false);
+        }
+
+        void ISession.Reset() {
+            gameObject.SetActive(true);
+            animator.Rebind();
+            animator.Update(0);
         }
     }
 }

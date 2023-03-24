@@ -1,5 +1,7 @@
 namespace Creazen.Seeker.AI {
+    using System.Linq;
     using Creazen.Seeker.Movement;
+    using Creazen.Seeker.Session;
     using Creazen.Seeker.Time;
     using Creazen.Seeker.Treasure;
     using Unity.MLAgents;
@@ -9,6 +11,8 @@ namespace Creazen.Seeker.AI {
     using UnityEngine.InputSystem;
 
     public class UnlockTreasureAgent : Agent {
+        [SerializeField] Transform trainEnvironment;
+
         Transform target = null;
         bool hasUnlockChest = false;
         float previousDistanceToTarget = -1;
@@ -18,6 +22,9 @@ namespace Creazen.Seeker.AI {
         float moveValue;
         bool isJump;
         bool isOpenChest;
+
+        //Training
+        Vector3 initialPosition;
 
         Idler idler;
         Mover mover;
@@ -31,10 +38,14 @@ namespace Creazen.Seeker.AI {
         }
 
         public override void Initialize() {
+            //Set Training Initial Values
+            initialPosition = transform.localPosition;
+            //
+
             idler = GetComponent<Idler>();
             mover = GetComponent<Mover>();
             keyHolder = GetComponent<KeyHolder>();
-            timer = FindObjectOfType<Timer>();
+            timer = trainEnvironment.GetComponentInChildren<Timer>();
 
             if(keyHolder != null) {
                 keyHolder.onCatch += () => AddReward(1f);
@@ -43,7 +54,7 @@ namespace Creazen.Seeker.AI {
             if(mover != null) {
                 mover.onLand += () => {
                     if(previousOnLandPosition != null) {
-                        if(Mathf.Approximately(previousOnLandPosition.y, transform.position.y)) {
+                        if(Mathf.Approximately(previousOnLandPosition.y, transform.localPosition.y)) {
                             AddReward(-0.5f);
                             Debug.Log("Approximate");
                         }
@@ -51,17 +62,28 @@ namespace Creazen.Seeker.AI {
                             AddReward(0.5f);
                         }
                     }
-                    previousOnLandPosition = transform.position;
+                    previousOnLandPosition = transform.localPosition;
                 };
             }
         }
 
+        public override void OnEpisodeBegin() {
+            var sessionObjects = trainEnvironment.GetComponentsInChildren<MonoBehaviour>(true).OfType<ISession>();
+            foreach(ISession sessionObject in sessionObjects) {
+                sessionObject.Reset();
+            }
+            transform.localPosition = initialPosition;
+            target = null;
+            hasUnlockChest = false;
+            previousDistanceToTarget = -1;
+        }
+
         public override void CollectObservations(VectorSensor sensor) {
-            if (target == null) {
+            if (target == null || !target.gameObject.activeInHierarchy) {
                 target = GetTarget();
             }
 
-            float currentDistanceToTarget = Vector3.Distance(target.position, transform.position);
+            float currentDistanceToTarget = Vector3.Distance(target.localPosition, transform.localPosition);
             if(previousDistanceToTarget != -1) {
                 if(currentDistanceToTarget > previousDistanceToTarget) {
                     AddReward(-0.2f);
@@ -73,7 +95,7 @@ namespace Creazen.Seeker.AI {
             }
             previousDistanceToTarget = currentDistanceToTarget;
             
-            sensor.AddObservation(target.position - transform.position);
+            sensor.AddObservation(target.localPosition - transform.localPosition);
         }
 
         public override void OnActionReceived(ActionBuffers actions) {
@@ -96,9 +118,11 @@ namespace Creazen.Seeker.AI {
             }
 
             if (unlockTreasureAction == 1) { 
+                Debug.Log("Test");
                 if(keyHolder.UnlockChest()) {
                     AddReward(1f);
                     hasUnlockChest = true;
+                    EndEpisode();
                 }
             }
         }
@@ -134,11 +158,11 @@ namespace Creazen.Seeker.AI {
         }
 
         Treasure.Key GetKey() {
-            return FindObjectOfType<Treasure.Key>();
+            return trainEnvironment.GetComponentInChildren<Treasure.Key>();
         }
 
         Chest GetTreasure() {
-            return FindObjectOfType<Chest>();
+            return trainEnvironment.GetComponentInChildren<Chest>();
         }
     }
 }
