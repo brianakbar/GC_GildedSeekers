@@ -10,6 +10,8 @@ namespace Creazen.Seeker.Treasure {
         [SerializeField] int keyRequired = 1;
         [SerializeField] float waitTimeAfterUnlock = 1f;
 
+        public event Action onUnlock;
+
         Coroutine processAfterUnlock;
 
         Animator animator = null;
@@ -21,6 +23,7 @@ namespace Creazen.Seeker.Treasure {
         public bool Unlock(int keyCount) {
             if (keyCount < keyRequired) return false;
             animator.SetTrigger("unlock");
+            if (onUnlock != null) onUnlock();
             //processAfterUnlock = StartCoroutine(ProcessAfterUnlock());
             return true;
         }
