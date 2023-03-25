@@ -98,7 +98,7 @@ PrefabInstance:
     - target: {fileID: 4083541516734205166, guid: 362cd968c9b859c4fabc41a6705f2f16, type: 3}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 22100000, guid: 744f63f975e0dc447b734e0c9b595e2f, type: 2}
+      objectReference: {fileID: 9100000, guid: 04f6cbba3164cb74885637877f457568, type: 2}
     - target: {fileID: 6327918819212750343, guid: 362cd968c9b859c4fabc41a6705f2f16, type: 3}
       propertyPath: m_Size.y
       value: 0.83
@@ -234,3 +234,15 @@ MonoBehaviour:
   jumpSpeeds:
   - 6
   - 5
+--- !u!114 &7145331291636053556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7027906960565475517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bb057cf652c1649a7bbd8c222ca803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

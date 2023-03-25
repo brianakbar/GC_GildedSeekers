@@ -1,5 +1,7 @@
 namespace Creazen.Seeker.Movement {
     using System;
+    using System.Collections.Generic;
+    using Creazen.Seeker.Combat;
     using Creazen.Seeker.Core;
     using UnityEngine;
 
@@ -40,12 +42,14 @@ namespace Creazen.Seeker.Movement {
         }
 
         public void StartAction(bool isRight) {
-            scheduler.StartAction(this);
+            if(!scheduler.StartAction(this)) return;
             moveDirection = isRight? 1 : -1;
             isMoving = true;
         }
 
         public bool Jump() {
+            if(!scheduler.StartAction(this)) return false;
+
             if(numberOfJumpLeft > 0) {
                 float jumpSpeed = jumpSpeeds[jumpSpeeds.Length - numberOfJumpLeft];
                 body.velocity = new Vector2(body.velocity.x, jumpSpeed);
@@ -67,9 +71,6 @@ namespace Creazen.Seeker.Movement {
                 transform.localScale = new Vector2(moveDirection, transform.localScale.y);
                 body.velocity = new Vector2(moveSpeed  * moveDirection, body.velocity.y);
             }
-            else {
-                body.velocity = new Vector2(0, body.velocity.y);
-            }
         }
 
         bool IsApproximatelyZero(float value) {
@@ -78,6 +79,10 @@ namespace Creazen.Seeker.Movement {
 
         void IAction.Cancel() {
             isMoving = false;
+        }
+
+        IEnumerable<Type> IAction.ExcludeType() {
+            yield return typeof(Fighter);
         }
     }
 }

@@ -1,4 +1,5 @@
 namespace Creazen.Seeker.Control {
+    using Creazen.Seeker.Combat;
     using Creazen.Seeker.Movement;
     using Creazen.Seeker.Treasure;
     using UnityEngine;
@@ -8,11 +9,13 @@ namespace Creazen.Seeker.Control {
         Idler idler = null;
         Mover mover = null;
         KeyHolder keyHolder = null;
+        Fighter fighter = null;
 
         void Awake() {
             idler = GetComponent<Idler>();
             mover = GetComponent<Mover>();
             keyHolder = GetComponent<KeyHolder>();
+            fighter = GetComponent<Fighter>();
         }
 
         void OnMove(InputValue value) {
@@ -33,6 +36,12 @@ namespace Creazen.Seeker.Control {
 
         void OnOpenChest() {
             keyHolder.UnlockChest();
+        }
+
+        void OnAttack() {
+            if(fighter != null) {
+                fighter.StartAction();
+            }
         }
     }
 }
