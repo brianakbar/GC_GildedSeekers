@@ -219,6 +219,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthPoints: 2
   damageSpeed: {x: 1, y: 2}
+  waitTimeAfterDeath: 4
 --- !u!114 &8474330288037633775
 MonoBehaviour:
   m_ObjectHideFlags: 0
