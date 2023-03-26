@@ -24,7 +24,7 @@ namespace Creazen.Seeker.Treasure {
             if (keyCount < keyRequired) return false;
             animator.SetTrigger("unlock");
             if (onUnlock != null) onUnlock();
-            //processAfterUnlock = StartCoroutine(ProcessAfterUnlock());
+            processAfterUnlock = StartCoroutine(ProcessAfterUnlock());
             return true;
         }
 

@@ -35,13 +35,11 @@ namespace Creazen.Seeker.Control {
         }
 
         void OnOpenChest() {
-            keyHolder.UnlockChest();
+            if(keyHolder != null) keyHolder.UnlockChest();
         }
 
         void OnAttack() {
-            if(fighter != null) {
-                fighter.StartAction();
-            }
+            if(fighter != null) fighter.StartAction();
         }
     }
 }

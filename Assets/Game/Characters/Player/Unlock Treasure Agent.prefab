@@ -63,8 +63,7 @@ PrefabInstance:
       propertyPath: jumpSpeeds.Array.data[0]
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 6609163275512114030, guid: 29a1e7d9cb11e914ebc2654db60ea11a, type: 3}
+    m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 29a1e7d9cb11e914ebc2654db60ea11a, type: 3}
 --- !u!1 &6058198155619439013 stripped
 GameObject:
@@ -106,7 +105,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6058198155619439013}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 330c7d8708a12c64b80a6d9949ec9114, type: 3}
   m_Name: 
@@ -140,7 +139,7 @@ MonoBehaviour:
     hasUpgradedBrainParametersWithActionSpec: 1
   m_Model: {fileID: 5022602860645237092, guid: 8902c8667b9708c45a06fdc43c7d07cf, type: 3}
   m_InferenceDevice: 0
-  m_BehaviorType: 0
+  m_BehaviorType: 2
   m_BehaviorName: Unlock Treasure Agent
   TeamId: 0
   m_UseChildSensors: 1
