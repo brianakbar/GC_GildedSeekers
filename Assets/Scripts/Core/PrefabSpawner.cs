@@ -10,10 +10,12 @@ namespace Creazen.Seeker.Core {
         GameObject spawnedPrefab = null;
 
         public void Spawn() {
-            spawnedPrefab = Instantiate(prefabToSpawn, spawnPosition, Quaternion.identity);
-            if(parent != null) {
-                spawnedPrefab.transform.SetParent(parent);
-            }
+            if(prefabToSpawn == null) return;
+            
+            spawnedPrefab = Instantiate(prefabToSpawn);
+            
+            if(parent != null) spawnedPrefab.transform.SetParent(parent);
+            if(spawnPosition != null) spawnedPrefab.transform.localPosition = spawnPosition;
         }
 
         void OnDrawGizmosSelected() {

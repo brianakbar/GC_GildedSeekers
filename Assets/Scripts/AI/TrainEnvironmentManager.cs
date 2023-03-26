@@ -8,7 +8,9 @@ namespace Creazen.Seeker.AI {
         [SerializeField] Vector2 size = new Vector2(5, 2);
 
         void OnValidate() {
-            EditorApplication.delayCall += RebuildEnvironment;
+            if(!EditorApplication.isPlayingOrWillChangePlaymode) {
+                EditorApplication.delayCall += RebuildEnvironment;
+            }
         }
 
         void RebuildEnvironment() {

@@ -22,7 +22,6 @@ namespace Creazen.Seeker.Game {
             UnlockTreasureAgent agent = player.GetComponent<UnlockTreasureAgent>();
             PlayerController playerController = player.GetComponent<PlayerController>();
             if(asPlayer) {
-                Debug.Log(asPlayer);
                 Destroy(player.GetComponent<DecisionRequester>());
                 if(agent != null) Destroy(agent);
                 if(playerController != null) playerController.enabled = true;

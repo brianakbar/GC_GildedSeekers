@@ -5,6 +5,7 @@ namespace Creazen.Seeker.Combat {
     using Creazen.Seeker.Attributes;
     using Creazen.Seeker.Core;
     using UnityEngine;
+    using UnityEngine.Events;
 
     [RequireComponent(typeof(ActionScheduler))]
     public class Fighter : MonoBehaviour, IAction {
@@ -13,6 +14,7 @@ namespace Creazen.Seeker.Combat {
         [SerializeField] Vector2 knockoutSpeed = new Vector2();
         [SerializeField] float knockoutRestoreTime = 2f;
         [SerializeField] Collider2D hitBox = null;
+        [SerializeField] UnityEvent onHitWall;
 
         Coroutine attackProcess;
 
@@ -40,6 +42,7 @@ namespace Creazen.Seeker.Combat {
                 Vector2 knockoutVelocity = new Vector2(knockoutSpeed.x * -1 * moveDirection, knockoutSpeed.y);
                 body.velocity = knockoutVelocity;
                 animator.SetTrigger("hitWall");
+                if(onHitWall != null) onHitWall.Invoke();
                 StartCoroutine(ProcessKnockout());
             }
         }

@@ -287,10 +287,39 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 10
-  anticipationWaitTime: 1
+  anticipationWaitTime: 0.5
   knockoutSpeed: {x: 3, y: 5}
   knockoutRestoreTime: 2
   hitBox: {fileID: 7134802242541496652}
+  onHitWall:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 3659187270718779288}
+        m_TargetAssemblyTypeName: Creazen.Seeker.Core.CameraShaker, Assembly-CSharp
+        m_MethodName: Play
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &3659187270718779288
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478910737135041257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 24f7d4895f3b19a4d984d359afe31991, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shakeDuration: 0.3
+  shakeMagnitude: 0.1
 --- !u!114 &6951469006749715757
 MonoBehaviour:
   m_ObjectHideFlags: 0
