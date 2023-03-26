@@ -205,6 +205,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 96ccebcea379d3e41a51b7fca5de9782, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7145331291636053556
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7027906960565475517}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f5bb057cf652c1649a7bbd8c222ca803, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthPoints: 2
+  damageSpeed: {x: 1, y: 2}
 --- !u!114 &8474330288037633775
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -234,15 +248,3 @@ MonoBehaviour:
   jumpSpeeds:
   - 6
   - 5
---- !u!114 &7145331291636053556
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7027906960565475517}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f5bb057cf652c1649a7bbd8c222ca803, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

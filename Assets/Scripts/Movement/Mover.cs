@@ -1,6 +1,7 @@
 namespace Creazen.Seeker.Movement {
     using System;
     using System.Collections.Generic;
+    using Creazen.Seeker.Attributes;
     using Creazen.Seeker.Combat;
     using Creazen.Seeker.Core;
     using UnityEngine;
@@ -83,6 +84,7 @@ namespace Creazen.Seeker.Movement {
 
         IEnumerable<Type> IAction.ExcludeType() {
             yield return typeof(Fighter);
+            yield return typeof(Health);
         }
     }
 }

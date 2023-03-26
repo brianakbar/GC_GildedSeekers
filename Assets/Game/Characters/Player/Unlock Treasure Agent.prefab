@@ -115,6 +115,7 @@ MonoBehaviour:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
   MaxStep: 2000
+  trainEnvironment: {fileID: 0}
 --- !u!114 &1359560834577943542
 MonoBehaviour:
   m_ObjectHideFlags: 0
