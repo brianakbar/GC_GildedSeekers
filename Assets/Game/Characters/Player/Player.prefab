@@ -221,7 +221,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f5bb057cf652c1649a7bbd8c222ca803, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  healthPoints: 2
+  healthPoints: 1
   damageSpeed: {x: 1, y: 2}
   waitTimeAfterDeath: 4
 --- !u!114 &8474330288037633775

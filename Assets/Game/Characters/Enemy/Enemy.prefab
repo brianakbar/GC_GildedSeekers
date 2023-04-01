@@ -129,7 +129,7 @@ BoxCollider2D:
   m_IsTrigger: 1
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0.27447093, y: -0.08169611}
+  m_Offset: {x: 0.06, y: -0.08169611}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0, y: 0}
@@ -140,7 +140,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.049149603, y: 0.35006246}
+  m_Size: {x: 0.57, y: 0.47}
   m_EdgeRadius: 0
 --- !u!1001 &3559485658570300911
 PrefabInstance:
@@ -151,6 +151,10 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1102709889093068550, guid: 362cd968c9b859c4fabc41a6705f2f16, type: 3}
       propertyPath: m_Name
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 1102709889093068550, guid: 362cd968c9b859c4fabc41a6705f2f16, type: 3}
+      propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 1543680108435372513, guid: 362cd968c9b859c4fabc41a6705f2f16, type: 3}
@@ -258,6 +262,82 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
+--- !u!114 &-6050113956697574742
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478910737135041257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5d1c4e0b1822b495aa52bc52839ecb30, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_BrainParameters:
+    VectorObservationSize: 4
+    NumStackedVectorObservations: 1
+    m_ActionSpec:
+      m_NumContinuousActions: 0
+      BranchSizes: 03000000020000000200000002000000
+    VectorActionSize: 03000000020000000200000002000000
+    VectorActionDescriptions: []
+    VectorActionSpaceType: 0
+    hasUpgradedBrainParametersWithActionSpec: 1
+  m_Model: {fileID: 5022602860645237092, guid: 2b17f1b52d84a2c44840ff1a9ae7dc06, type: 3}
+  m_InferenceDevice: 0
+  m_BehaviorType: 0
+  m_BehaviorName: Chase Target Agent
+  TeamId: 0
+  m_UseChildSensors: 1
+  m_UseChildActuators: 1
+  m_DeterministicInference: 0
+  m_ObservableAttributeHandling: 0
+--- !u!114 &-5548095831985446626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478910737135041257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f67c7e722ba14acd9153bb4488bff6e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SensorName: RayPerceptionSensor
+  m_DetectableTags:
+  - Terrain
+  - Player
+  m_RaysPerDirection: 6
+  m_MaxRayDegrees: 70
+  m_SphereCastRadius: 0.5
+  m_RayLength: 20
+  m_RayLayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967291
+  m_ObservationStacks: 1
+  m_AlternatingRayOrder: 1
+  rayHitColor: {r: 1, g: 0, b: 0, a: 1}
+  rayMissColor: {r: 1, g: 1, b: 1, a: 1}
+--- !u!114 &-4155485302519706084
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4478910737135041257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d16043970dc7332419fc76eea332346a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agentParameters:
+    maxStep: 0
+  hasUpgradedFromAgentParameters: 1
+  MaxStep: 3000
+  trainEnvironment: {fileID: 0}
+  targetTag: Player
 --- !u!114 &505430047832878941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -320,7 +400,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shakeDuration: 0.3
   shakeMagnitude: 0.1
---- !u!114 &6951469006749715757
+--- !u!114 &6975976393794565541
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -329,9 +409,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 4478910737135041257}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 96ccebcea379d3e41a51b7fca5de9782, type: 3}
+  m_Script: {fileID: 11500000, guid: 3a5c9d521e5ef4759a8246a07d52221e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  DecisionPeriod: 1
+  TakeActionsBetweenDecisions: 1
 --- !u!4 &6654139190725897850 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 7871611612335371157, guid: 362cd968c9b859c4fabc41a6705f2f16, type: 3}

@@ -5,12 +5,16 @@ namespace Creazen.Seeker.Attributes {
     using System.Linq;
     using Creazen.Seeker.Core;
     using Creazen.Seeker.LevelManagement;
+    using Creazen.Seeker.Session;
     using UnityEngine;
 
-    public class Health : MonoBehaviour, IAction {
+    public class Health : MonoBehaviour, IAction, ISession {
         [SerializeField] float healthPoints = 1f;
         [SerializeField] Vector2 damageSpeed = new Vector2();
         [SerializeField] float waitTimeAfterDeath = 3f;
+
+        public event Action onTakeDamage;
+        public event Action onDie;
 
         Coroutine damageProcess;
 
@@ -27,6 +31,7 @@ namespace Creazen.Seeker.Attributes {
         public void TakeDamage(float damage, Vector2 knockoutVelocity) {
             if(!scheduler.StartAction(this)) return;
 
+            if(onTakeDamage != null) onTakeDamage();
             damageProcess = StartCoroutine(ProcessDamage(damage, knockoutVelocity));
         }
 
@@ -74,6 +79,7 @@ namespace Creazen.Seeker.Attributes {
         }
 
         IEnumerator ProcessDeath() {
+            if(onDie != null) onDie();
             yield return new WaitForSeconds(waitTimeAfterDeath);
 
             FindObjectOfType<LevelManager>().RestartLevel();
@@ -85,6 +91,20 @@ namespace Creazen.Seeker.Attributes {
 
         void IAction.Cancel() {
             StopCoroutine(damageProcess);
+        }
+
+        void ISession.Reset() {
+            foreach(Collider2D collider in GetComponentsInChildren<Collider2D>()) {
+                collider.enabled = true;
+            }
+            if(damageProcess != null) {
+                StopCoroutine(damageProcess);
+                animator.SetBool("isTakingDamage", false);
+                animator.Rebind();
+                animator.Update(0);
+            }
+            body.velocity = new Vector2(0, body.velocity.y);
+            transform.localRotation = Quaternion.Euler(transform.eulerAngles.x, transform.eulerAngles.y, 0);
         }
     }
 }

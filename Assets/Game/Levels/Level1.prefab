@@ -2455,6 +2455,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level1
       objectReference: {fileID: 0}
+    - target: {fileID: 7224828769336077198, guid: ee095eaadd0d14c48840aedf4a34e213, type: 3}
+      propertyPath: m_TagString
+      value: TrainEnvironment
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: ee095eaadd0d14c48840aedf4a34e213, type: 3}
 --- !u!4 &2310068217579557492 stripped
@@ -2592,11 +2596,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4121598967832081404, guid: 8ac508c4adbdd6f438f82d5666cd6586, type: 3}
       propertyPath: initialTime
-      value: 5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 4121598967832081405, guid: 8ac508c4adbdd6f438f82d5666cd6586, type: 3}
       propertyPath: m_Name
       value: Enemy Spawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4121598967832081405, guid: 8ac508c4adbdd6f438f82d5666cd6586, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ac508c4adbdd6f438f82d5666cd6586, type: 3}

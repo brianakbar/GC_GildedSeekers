@@ -16,6 +16,9 @@ namespace Creazen.Seeker.Combat {
         [SerializeField] Collider2D hitBox = null;
         [SerializeField] UnityEvent onHitWall;
 
+        public event Action<GameObject> onHit;
+
+        float floatZeroTolerance = 0.001f;
         Coroutine attackProcess;
 
         Animator animator = null;
@@ -45,6 +48,7 @@ namespace Creazen.Seeker.Combat {
                 if(onHitWall != null) onHitWall.Invoke();
                 StartCoroutine(ProcessKnockout());
             }
+            if(onHit != null) onHit(other.gameObject);
         }
 
         public void StartAction() {
@@ -68,7 +72,7 @@ namespace Creazen.Seeker.Combat {
         IEnumerator ProcessKnockout() {
             float moveDirection = Mathf.Sign(transform.localScale.x);
             while(true) {
-                if(Mathf.Approximately(body.velocity.y, 0)) break;
+                if(IsApproximatelyZero(body.velocity.y)) break;
 
                 Vector2 verticalV = new Vector2(0, body.velocity.y);
                 Vector2 horizontalV = new Vector2(body.velocity.x, 0);
@@ -83,6 +87,10 @@ namespace Creazen.Seeker.Combat {
             yield return new WaitForSeconds(knockoutRestoreTime);
             animator.SetBool("isAttacking", false);
             scheduler.Finish();
+        }
+
+        bool IsApproximatelyZero(float value) {
+            return (-floatZeroTolerance < value) && (value < floatZeroTolerance);
         }
 
         void IAction.Cancel() {

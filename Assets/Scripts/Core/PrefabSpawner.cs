@@ -10,12 +10,14 @@ namespace Creazen.Seeker.Core {
         GameObject spawnedPrefab = null;
 
         public void Spawn() {
-            if(prefabToSpawn == null) return;
+            if(prefabToSpawn == null) return; 
             
-            spawnedPrefab = Instantiate(prefabToSpawn);
-            
-            if(parent != null) spawnedPrefab.transform.SetParent(parent);
-            if(spawnPosition != null) spawnedPrefab.transform.localPosition = spawnPosition;
+            if(spawnPosition != null) {
+                spawnedPrefab = Instantiate(prefabToSpawn, spawnPosition + parent.position, Quaternion.identity, parent);
+            }
+            else {
+                spawnedPrefab = Instantiate(prefabToSpawn, parent);
+            }
         }
 
         void OnDrawGizmosSelected() {
@@ -23,7 +25,9 @@ namespace Creazen.Seeker.Core {
         }
 
         void ISession.Reset() {
-            Destroy(spawnedPrefab);
+            if(spawnedPrefab) {
+                Destroy(spawnedPrefab);
+            }
         }
     }
 }

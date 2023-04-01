@@ -7,6 +7,8 @@ namespace Creazen.Seeker.AI {
         [SerializeField] Vector2 spacing = new Vector2();
         [SerializeField] Vector2 size = new Vector2(5, 2);
 
+        const string trainEnvironmentTag = "TrainEnvironment";
+
         void OnValidate() {
             if(!EditorApplication.isPlayingOrWillChangePlaymode) {
                 EditorApplication.delayCall += RebuildEnvironment;
@@ -22,8 +24,10 @@ namespace Creazen.Seeker.AI {
 
             for(int y = 0; y < size.y; y++) {
                 for(int x = 0; x < size.x; x++) {
-                    Instantiate(trainEnvironmentPrefab, new Vector2(x * spacing.x, y * spacing.y), 
-                                Quaternion.identity, transform);
+                    GameObject instance = Instantiate(trainEnvironmentPrefab, 
+                                                    new Vector2(x * spacing.x, y * spacing.y), 
+                                                    Quaternion.identity, transform);
+                    instance.tag = trainEnvironmentTag;
                 }
             }
         }

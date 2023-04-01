@@ -6,7 +6,7 @@ namespace Creazen.Seeker.Game {
     using UnityEngine.SceneManagement;
 
     public class GamePreference : MonoBehaviour {
-        bool asPlayer = true;
+        bool asPlayer = false;
         public bool AsPlayer { get { return asPlayer; } set { asPlayer = value; } }
 
         const string playerTag = "Player";
@@ -28,7 +28,7 @@ namespace Creazen.Seeker.Game {
             }
             else {
                 if(playerController != null) Destroy(playerController);
-                //if(agent != null) agent.enabled = true;
+                if(agent != null) agent.enabled = true;
             }
         }
     }

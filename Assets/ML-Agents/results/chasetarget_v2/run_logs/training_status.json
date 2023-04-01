@@ -1,0 +1,56 @@
+{
+    "Chase Target Agent": {
+        "checkpoints": [
+            {
+                "steps": 499961,
+                "file_path": "results\\chasetarget_v2\\Chase Target Agent\\Chase Target Agent-499961.onnx",
+                "reward": null,
+                "creation_time": 1680372036.3801403,
+                "auxillary_file_paths": [
+                    "results\\chasetarget_v2\\Chase Target Agent\\Chase Target Agent-499961.pt"
+                ]
+            },
+            {
+                "steps": 500025,
+                "file_path": "results\\chasetarget_v2\\Chase Target Agent\\Chase Target Agent-500025.onnx",
+                "reward": null,
+                "creation_time": 1680372036.483853,
+                "auxillary_file_paths": [
+                    "results\\chasetarget_v2\\Chase Target Agent\\Chase Target Agent-500025.pt"
+                ]
+            },
+            {
+                "steps": 500025,
+                "file_path": "results\\chasetarget_v2\\Chase Target Agent\\Chase Target Agent-500025.onnx",
+                "reward": null,
+                "creation_time": 1680372678.4446678,
+                "auxillary_file_paths": [
+                    "results\\chasetarget_v2\\Chase Target Agent\\Chase Target Agent-500025.pt"
+                ]
+            },
+            {
+                "steps": 500025,
+                "file_path": "results\\chasetarget_v2\\Chase Target Agent\\Chase Target Agent-500025.onnx",
+                "reward": null,
+                "creation_time": 1680372703.673237,
+                "auxillary_file_paths": [
+                    "results\\chasetarget_v2\\Chase Target Agent\\Chase Target Agent-500025.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 500025,
+            "file_path": "results\\chasetarget_v2\\Chase Target Agent.onnx",
+            "reward": null,
+            "creation_time": 1680372703.673237,
+            "auxillary_file_paths": [
+                "results\\chasetarget_v2\\Chase Target Agent\\Chase Target Agent-500025.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}

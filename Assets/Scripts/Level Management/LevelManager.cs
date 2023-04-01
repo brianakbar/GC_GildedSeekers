@@ -10,8 +10,7 @@ namespace Creazen.Seeker.LevelManagement {
         }
 
         public void GoToNextLevel() {
-            //SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
-            //StartCoroutine(ProcessLoadLevel(SceneManager.GetActiveScene().buildIndex));
+            
             int nextLevelBuildIndex = SceneManager.GetActiveScene().buildIndex + 1;
             if (!IsSceneExist(nextLevelBuildIndex)) {
                 StartCoroutine(ProcessLoadLevel(0));
@@ -19,6 +18,7 @@ namespace Creazen.Seeker.LevelManagement {
             }
 
             StartCoroutine(ProcessLoadLevel(nextLevelBuildIndex));
+            
         }
 
         IEnumerator ProcessLoadLevel(int buildIndex) {

@@ -50,7 +50,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 4121598967832081378}
-        m_TargetAssemblyTypeName: Creazen.Seeker.Core.GameObjectSpawner, Assembly-CSharp
+        m_TargetAssemblyTypeName: Creazen.Seeker.Core.PrefabSpawner, Assembly-CSharp
         m_MethodName: Spawn
         m_Mode: 1
         m_Arguments:

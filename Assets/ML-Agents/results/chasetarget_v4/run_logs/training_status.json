@@ -1,0 +1,38 @@
+{
+    "Chase Target Agent": {
+        "checkpoints": [
+            {
+                "steps": 499040,
+                "file_path": "results\\chasetarget_v4\\Chase Target Agent\\Chase Target Agent-499040.onnx",
+                "reward": 134.4920997619629,
+                "creation_time": 1680376020.0198424,
+                "auxillary_file_paths": [
+                    "results\\chasetarget_v4\\Chase Target Agent\\Chase Target Agent-499040.pt"
+                ]
+            },
+            {
+                "steps": 533040,
+                "file_path": "results\\chasetarget_v4\\Chase Target Agent\\Chase Target Agent-533040.onnx",
+                "reward": null,
+                "creation_time": 1680376136.1752124,
+                "auxillary_file_paths": [
+                    "results\\chasetarget_v4\\Chase Target Agent\\Chase Target Agent-533040.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 533040,
+            "file_path": "results\\chasetarget_v4\\Chase Target Agent.onnx",
+            "reward": null,
+            "creation_time": 1680376136.1752124,
+            "auxillary_file_paths": [
+                "results\\chasetarget_v4\\Chase Target Agent\\Chase Target Agent-533040.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}

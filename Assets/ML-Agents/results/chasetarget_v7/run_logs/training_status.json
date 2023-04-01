@@ -1,0 +1,65 @@
+{
+    "Chase Target Agent": {
+        "checkpoints": [
+            {
+                "steps": 104919,
+                "file_path": "results\\chasetarget_v7\\Chase Target Agent\\Chase Target Agent-104919.onnx",
+                "reward": -0.9409002304077149,
+                "creation_time": 1680384201.4398704,
+                "auxillary_file_paths": [
+                    "results\\chasetarget_v7\\Chase Target Agent\\Chase Target Agent-104919.pt"
+                ]
+            },
+            {
+                "steps": 398062,
+                "file_path": "results\\chasetarget_v7\\Chase Target Agent\\Chase Target Agent-398062.onnx",
+                "reward": 17.395939552783965,
+                "creation_time": 1680384769.694525,
+                "auxillary_file_paths": [
+                    "results\\chasetarget_v7\\Chase Target Agent\\Chase Target Agent-398062.pt"
+                ]
+            },
+            {
+                "steps": 460417,
+                "file_path": "results\\chasetarget_v7\\Chase Target Agent\\Chase Target Agent-460417.onnx",
+                "reward": null,
+                "creation_time": 1680384983.3460295,
+                "auxillary_file_paths": [
+                    "results\\chasetarget_v7\\Chase Target Agent\\Chase Target Agent-460417.pt"
+                ]
+            },
+            {
+                "steps": 499351,
+                "file_path": "results\\chasetarget_v7\\Chase Target Agent\\Chase Target Agent-499351.onnx",
+                "reward": -49.71789741516113,
+                "creation_time": 1680385062.5095015,
+                "auxillary_file_paths": [
+                    "results\\chasetarget_v7\\Chase Target Agent\\Chase Target Agent-499351.pt"
+                ]
+            },
+            {
+                "steps": 719180,
+                "file_path": "results\\chasetarget_v7\\Chase Target Agent\\Chase Target Agent-719180.onnx",
+                "reward": -18.76854283469064,
+                "creation_time": 1680385447.8045542,
+                "auxillary_file_paths": [
+                    "results\\chasetarget_v7\\Chase Target Agent\\Chase Target Agent-719180.pt"
+                ]
+            }
+        ],
+        "final_checkpoint": {
+            "steps": 719180,
+            "file_path": "results\\chasetarget_v7\\Chase Target Agent.onnx",
+            "reward": -18.76854283469064,
+            "creation_time": 1680385447.8045542,
+            "auxillary_file_paths": [
+                "results\\chasetarget_v7\\Chase Target Agent\\Chase Target Agent-719180.pt"
+            ]
+        }
+    },
+    "metadata": {
+        "stats_format_version": "0.3.0",
+        "mlagents_version": "0.30.0",
+        "torch_version": "1.13.1+cpu"
+    }
+}

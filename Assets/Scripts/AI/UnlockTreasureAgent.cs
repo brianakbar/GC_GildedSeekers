@@ -1,5 +1,6 @@
 namespace Creazen.Seeker.AI {
     using System.Linq;
+    using Creazen.Seeker.Attributes;
     using Creazen.Seeker.Movement;
     using Creazen.Seeker.Session;
     using Creazen.Seeker.Time;
@@ -17,6 +18,7 @@ namespace Creazen.Seeker.AI {
         bool hasUnlockChest = false;
         float previousDistanceToTarget = -1;
         Vector3 previousOnLandPosition;
+        int previousMoveAction = 0;
 
         //Heuristic
         float moveValue;
@@ -30,6 +32,7 @@ namespace Creazen.Seeker.AI {
         Mover mover;
         KeyHolder keyHolder;
         Timer timer;
+        Health health;
 
         void Update() {
             if(!hasUnlockChest) {
@@ -46,23 +49,33 @@ namespace Creazen.Seeker.AI {
             mover = GetComponent<Mover>();
             keyHolder = GetComponent<KeyHolder>();
             timer = trainEnvironment.GetComponentInChildren<Timer>();
+            health = GetComponent<Health>();
 
-            if(keyHolder != null) {
+            if(keyHolder) {
                 keyHolder.onCatch += () => AddReward(1f);
             }
 
-            if(mover != null) {
+            if(mover) {
                 mover.onLand += () => {
                     if(previousOnLandPosition != null) {
                         if(Mathf.Approximately(previousOnLandPosition.y, transform.localPosition.y)) {
                             AddReward(-0.5f);
-                            Debug.Log("Approximate");
                         }
                         else {
                             AddReward(0.5f);
                         }
                     }
                     previousOnLandPosition = transform.localPosition;
+                };
+            }
+
+            if(health) {
+                health.onTakeDamage += () => {
+                    AddReward(-0.1f);
+                };
+                health.onDie += () => {
+                    AddReward(-1f);
+                    //EndEpisode();
                 };
             }
         }
@@ -76,6 +89,7 @@ namespace Creazen.Seeker.AI {
             target = null;
             hasUnlockChest = false;
             previousDistanceToTarget = -1;
+            previousMoveAction = 0;
         }
 
         public override void CollectObservations(VectorSensor sensor) {
@@ -87,10 +101,9 @@ namespace Creazen.Seeker.AI {
             if(previousDistanceToTarget != -1) {
                 if(currentDistanceToTarget > previousDistanceToTarget) {
                     AddReward(-0.2f);
-                    Debug.Log("Menjauh");
                 }
                 else if(currentDistanceToTarget < previousDistanceToTarget) {
-                    AddReward(0.2f);
+                    AddReward(0.1f);
                 }
             }
             previousDistanceToTarget = currentDistanceToTarget;
@@ -108,6 +121,14 @@ namespace Creazen.Seeker.AI {
             int jumpAction = actions.DiscreteActions[1];
             int unlockTreasureAction = actions.DiscreteActions[2];
 
+            if(previousMoveAction != moveAction) {
+                AddReward(-0.3f);
+            }
+            else {
+                AddReward(0.01f);
+            }
+            previousMoveAction = moveAction;
+
             if (moveAction == 0) { idler.StartAction(); }
             else if (moveAction == 1) { mover.StartAction(true); }
             else { mover.StartAction(false); }
@@ -118,11 +139,10 @@ namespace Creazen.Seeker.AI {
             }
 
             if (unlockTreasureAction == 1) { 
-                Debug.Log("Test");
                 if(keyHolder.UnlockChest()) {
                     AddReward(1f);
                     hasUnlockChest = true;
-                    EndEpisode();
+                    //EndEpisode();
                 }
             }
         }
