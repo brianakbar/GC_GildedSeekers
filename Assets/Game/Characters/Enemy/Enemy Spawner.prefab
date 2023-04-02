@@ -1,5 +1,52 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &2670516047424731735
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7279745991248139317}
+  - component: {fileID: 5481949373393348611}
+  m_Layer: 0
+  m_Name: Prefab Spawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7279745991248139317
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670516047424731735}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 4121598967832081379}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5481949373393348611
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2670516047424731735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be992fa31b37676429d1c1d7b0317885, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  prefabToSpawn: {fileID: 4478910737135041257, guid: 12c74e6b59295ba43851b363512a4543, type: 3}
+  spawnPosition: {x: -6.5, y: -0.5, z: 0}
+  parent: {fileID: 0}
 --- !u!1 &4121598967832081405
 GameObject:
   m_ObjectHideFlags: 0
@@ -10,7 +57,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4121598967832081379}
   - component: {fileID: 4121598967832081404}
-  - component: {fileID: 4121598967832081378}
   m_Layer: 0
   m_Name: Enemy Spawner
   m_TagString: Untagged
@@ -29,7 +75,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7279745991248139317}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -49,7 +96,7 @@ MonoBehaviour:
   onCountdownComplete:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 4121598967832081378}
+      - m_Target: {fileID: 5481949373393348611}
         m_TargetAssemblyTypeName: Creazen.Seeker.Core.PrefabSpawner, Assembly-CSharp
         m_MethodName: Spawn
         m_Mode: 1
@@ -61,18 +108,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &4121598967832081378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4121598967832081405}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be992fa31b37676429d1c1d7b0317885, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  prefabToSpawn: {fileID: 4478910737135041257, guid: 12c74e6b59295ba43851b363512a4543, type: 3}
-  spawnPosition: {x: -6.5, y: -0.5, z: 0}
-  parent: {fileID: 0}

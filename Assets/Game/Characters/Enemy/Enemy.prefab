@@ -335,7 +335,7 @@ MonoBehaviour:
   agentParameters:
     maxStep: 0
   hasUpgradedFromAgentParameters: 1
-  MaxStep: 3000
+  MaxStep: 0
   trainEnvironment: {fileID: 0}
   targetTag: Player
 --- !u!114 &505430047832878941
@@ -370,6 +370,7 @@ MonoBehaviour:
   anticipationWaitTime: 0.5
   knockoutSpeed: {x: 3, y: 5}
   knockoutRestoreTime: 2
+  attackRestoreTime: 0.2
   hitBox: {fileID: 7134802242541496652}
   onHitWall:
     m_PersistentCalls:

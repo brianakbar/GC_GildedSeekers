@@ -13,11 +13,13 @@ namespace Creazen.Seeker.Combat {
         [SerializeField] float anticipationWaitTime = 1f;
         [SerializeField] Vector2 knockoutSpeed = new Vector2();
         [SerializeField] float knockoutRestoreTime = 2f;
+        [SerializeField] float attackRestoreTime = 0.1f;
         [SerializeField] Collider2D hitBox = null;
         [SerializeField] UnityEvent onHitWall;
 
         public event Action<GameObject> onHit;
 
+        bool canAttack = true;
         float floatZeroTolerance = 0.001f;
         Coroutine attackProcess;
 
@@ -51,14 +53,17 @@ namespace Creazen.Seeker.Combat {
             if(onHit != null) onHit(other.gameObject);
         }
 
-        public void StartAction() {
-            if(!Mathf.Approximately(body.velocity.y, 0)) return;
+        public bool StartAction() {
+            if(!canAttack) return false;
+            if(!Mathf.Approximately(body.velocity.y, 0)) return false;
 
-            if(!scheduler.StartAction(this)) return;
+            if(!scheduler.StartAction(this)) return false;
             attackProcess = StartCoroutine(ProcessAttack());
+            return true;
         }
 
         IEnumerator ProcessAttack() {
+            canAttack = false;
             body.velocity = new Vector2(0, body.velocity.y);
             animator.SetBool("isAttacking", true);
             animator.SetTrigger("anticipate");
@@ -87,6 +92,8 @@ namespace Creazen.Seeker.Combat {
             yield return new WaitForSeconds(knockoutRestoreTime);
             animator.SetBool("isAttacking", false);
             scheduler.Finish();
+            yield return new WaitForSeconds(attackRestoreTime);
+            canAttack = true;
         }
 
         bool IsApproximatelyZero(float value) {

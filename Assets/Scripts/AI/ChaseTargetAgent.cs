@@ -58,7 +58,7 @@ namespace Creazen.Seeker.AI {
             if(mover != null) {
                 mover.onLand += () => {
                     if(previousOnLandPosition != null) {
-                        if(Mathf.Approximately(previousOnLandPosition.y, transform.localPosition.y)) {
+                        if(IsApproximate(previousOnLandPosition, transform.localPosition)) {
                             AddReward(-0.5f);
                         }
                         else {
@@ -79,6 +79,7 @@ namespace Creazen.Seeker.AI {
             if(fighter != null) {
                 fighter.onHit += (gameObject) => {
                     if(gameObject.TryGetComponent(out Health health)) {
+                        Debug.Log("Player");
                         AddReward(20f);
                         // var sessionObjects = trainEnvironment.GetComponentsInChildren<MonoBehaviour>(true).OfType<ISession>();
                         // foreach(ISession sessionObject in sessionObjects) {
@@ -87,6 +88,7 @@ namespace Creazen.Seeker.AI {
                         // EndEpisode();
                     }
                     else {
+                        Debug.Log("Wall");
                         AddReward(-1f);
                     }
                 };
@@ -113,14 +115,12 @@ namespace Creazen.Seeker.AI {
             }
 
             float currentDistanceToTarget = Vector3.Distance(target.localPosition, transform.localPosition);
-            if(IsApproximate(transform.position, target.position)) {
-                if(previousDistanceToTarget != -1) {
-                    if(currentDistanceToTarget > previousDistanceToTarget) {
-                        AddReward(-0.2f);
-                    }
-                    else if(currentDistanceToTarget < previousDistanceToTarget) {
-                        AddReward(0.1f);
-                    }
+            if(previousDistanceToTarget != -1) {
+                if(currentDistanceToTarget > previousDistanceToTarget) {
+                    AddReward(-0.2f);
+                }
+                else if(currentDistanceToTarget < previousDistanceToTarget) {
+                    AddReward(0.1f);
                 }
             }
             previousDistanceToTarget = currentDistanceToTarget;
@@ -133,6 +133,7 @@ namespace Creazen.Seeker.AI {
         }
 
         public override void OnActionReceived(ActionBuffers actions) {
+            Debug.Log(target);
             if(targetHasUnlockChest) {
                 idler.StartAction();
                 return;
@@ -154,9 +155,11 @@ namespace Creazen.Seeker.AI {
             if(attackAction == 1) {
                 if(transform.position.x < target.position.x) {
                     mover.StartAction(true);
+                    Debug.Log("Move Right");
                 }
                 else if(transform.position.x > target.position.x) {
                     mover.StartAction(false);
+                    Debug.Log("Move Left");
                 }
                 fighter.StartAction();
                 if(!IsApproximate(transform.position, target.position)) {
